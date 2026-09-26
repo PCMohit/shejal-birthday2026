@@ -964,11 +964,26 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 }
 
 @media(max-width:649px){
-  .screen,.section{padding:70px 18px}
+  /* Mobile layout: keep every section truly centered within the viewport.
+     The desktop max-width is intentionally removed here so narrow phones do not
+     inherit an asymmetric content box or leave excess space on the right. */
+  .screen,.section{
+    width:100%;
+    max-width:none;
+    margin-inline:auto;
+    padding:70px 18px;
+  }
+  .section > *, .screen > *{
+    width:100%;
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .section-label{width:100%;}
+  .section::before{left:18px;right:18px;width:auto;}
   .hero{padding-top:38px}
   .hero::before{top:7%;right:-8%;font-size:165px}
   .hero::after{width:220px;height:220px}
-  .section::before{left:18px}
   .lightbox{padding:14px}
   .lightbox-image-wrap,.lightbox-image-wrap img{max-height:61svh}
   .lightbox-caption{margin-top:10px}
